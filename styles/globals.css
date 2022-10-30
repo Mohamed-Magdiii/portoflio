@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "burtons";
+  src: url("../public/Burtons.otf");
+}
+
+
+.img-move{
+  animation: MoveUpDown 3s linear infinite;
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 15px;
+  }
+  50% {
+    bottom: 50px;
+  }
+}
+
+
+/*Skills*/
+.skill{
+  position: relative;
+
+}
+
+.skill-bx{
+ background-color: #151515;
+ margin-top: 50px;
+ border-radius: 64px ;
+ text-align: center;
+ padding: 60px 50px;
+ margin-top: -60px;
+ 
+}
+
+.skill-slider .item  h5{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* .skill p{
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px 0 75px 0;
+}
+*/
+.skill-slider{
+width: 80%;
+margin: 0 auto;
+} 
+
+.skill-slider .item .img-carosel{
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+}
+
+
+.background-img-left {
+  top:28%;
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  z-index: -4;
+}
