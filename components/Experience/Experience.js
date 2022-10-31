@@ -1,7 +1,5 @@
 import { BsPatchCheckFill } from "react-icons/bs";
-import code from "../../public/code.png";
-import Image from "next/image";
-import consulting from "../../public/consulting.png";
+
 
 const Experience = () => {
   return (

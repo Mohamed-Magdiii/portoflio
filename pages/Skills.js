@@ -1,10 +1,6 @@
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import meter1 from '../public/meter1.svg'
-import meter2 from '../public/meter2.svg'
-import meter3 from '../public/meter3.svg'
 import colorSharp from '../public/color-sharp.png'
-import  Image  from 'next/image';
 
 const Skills = ()=>{
     const responsive = {
