@@ -20,7 +20,7 @@ const TopNavComponent = ({handleClick})=>{
     return (
         <section >
         <nav className="py-10 mb-10 flex justify-between dark:text-white">
-          <h1 className="font-burtons text-2xl">|Megz|</h1>
+          <h1 className="font-burtons text-2xl">| Megz |</h1>
           <ul className="flex items-center">
             <li>
               <BsFillMoonStarsFill
@@ -30,7 +30,7 @@ const TopNavComponent = ({handleClick})=>{
             </li>
             <li>
               <button
-                className="bg-gradient-to-r from-black text- to-purple-800 text-white px-4 py-2 border-none rounded-md ml-8"
+                className="bg-gradient-to-r from-black text- to-grey-800 text-white px-4 py-2 border-none rounded-md ml-8"
                 onClick={onButtonClick}
               >
                 Download Resume
