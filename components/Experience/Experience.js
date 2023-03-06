@@ -22,9 +22,11 @@ const Experience = () => {
           <div className="lg:flex  gap-10">
           <div className="shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1 ">
               {/* <Image src={code} width={100} height={100} /> */}
-              <h3 className="text-lg font-medium pt-8 pb-2 py-4 text-teal-600">
-                Frontend Development
-              </h3>
+              <div className="text-gray-800 pt-8  py-4  flex gap-2">
+              <img src="/browser.png"/>
+                <h3 className="text-lg font-medium  text-teal-600">Front End Development</h3>
+              </div>
+              
               <div className="grid grid-cols-2  py-1">
               <div className="text-gray-800 py-1  flex gap-2">
                 <BsPatchCheckFill></BsPatchCheckFill>
@@ -50,9 +52,10 @@ const Experience = () => {
             </div>
             <div className="shadow-lg relative p-10 rounded-xl my-10 dark:bg-white flex-1">
              
-              <h3 className="text-lg font-medium pt-8 pb-2 py-4 text-teal-600">
-                Backend Development
-              </h3>
+            <div className="text-gray-800 pt-8  py-4  flex gap-2">
+              <img src="/server.png"/>
+                <h3 className="text-lg font-medium  text-teal-600">Front End Development</h3>
+              </div>
               <div className="grid grid-cols-2 py-4 ">
               <div className="text-gray-800 py-1  flex gap-2">
                 <BsPatchCheckFill></BsPatchCheckFill>

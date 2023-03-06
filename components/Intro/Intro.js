@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 import { AiFillTwitterCircle, AiFillLinkedin, AiFillYoutube, AiFillGithub } from 'react-icons/ai';
 import  Image  from 'next/image';
@@ -9,10 +10,10 @@ import { useState, useEffect } from 'react';
 const Intro = ()=>{
     const [loopNum , setLoopNum] = useState(0)
     const [isDeleting, setisDeleting] = useState(false)
-    const toRotate = ["Web developer"]
+    const toRotate = ["Web developer", "Full stack developer" , "Backend developer", "Frontend developer"]
     const [text, settext] = useState('')
     const [delta , setDelta] = useState(300- Math.random()* 100)
-    const period = 2000
+    const period = 500
     useEffect(() => {
       let ticker = setInterval(() => {
         tick()
@@ -37,14 +38,14 @@ const Intro = ()=>{
         }else if(isDeleting && updatedText===''){
                 setisDeleting(false)
                 setLoopNum(loopNum + 1)
-                setDelta(500)
+                setDelta(700)
             }
     }
     return (
         <div className="text-center max-h-screen lg:flex my-10 py-10">
         <div className='mt-9' >
           <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-600 md:text-6xl">
-            Hi, i'm Mohamed Magdy
+            Hi, I'm Mohamed Magdy
           </h2>
           <h3 className="text-3xl  py-2 dark:text-white md:text-3xl">
             {text}
