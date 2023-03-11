@@ -17,21 +17,20 @@ const realProjects = [
         techs : [
                 "NodeJS","ReactJS - Redux (Thunk)", "MongoDB" 
         ],
-        github:"https://github.com/Mohamed-Magdiii/Mahsoly.git",
+        github:"https://github.com/Mohamed-Magdiii/sata-ecommerce-app.git",
         demo: null,
         images:[
             "/sata/sata11.jpeg",
             "/sata/sata1.jpeg",
             "/sata/sata3.jpeg",
-            "/sata/sata1 (4).jpeg",
-            "/sata/sata1 (5).jpeg",
-            "/sata/sata1 (6).jpeg",
-            "/sata/sata1 (7).jpeg",
-            "/sata/sata1 (8).jpeg",
-            "/sata/sata1 (9).jpeg",
-            "/sata/sata1 (10).jpeg",
-            "/sata/sata1 (12).jpeg",
-            "/sata/sata1 (13).jpeg",
+            "/sata/sata4.jpeg",
+            "/sata/sata6.jpeg",
+            "/sata/sata7.jpeg",
+            "/sata/sata8.jpeg",
+            "/sata/sata9.jpeg",
+            "/sata/sata10.jpeg",
+            "/sata/sata12.jpeg",
+            "/sata/sata13.jpeg",
 
         ]
     },
@@ -54,5 +53,9 @@ const realProjects = [
     },
 ]
 
+const learningProjects = [
+  
+]
 
-module.exports = {realProjects}
+
+module.exports = {realProjects, learningProjects}
