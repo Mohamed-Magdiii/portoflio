@@ -86,36 +86,7 @@ const Projects = () => {
    
 
         </Swiper>
-        {/* <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
-            <div className="basis-1/4 flex-2 ">
-              <Image
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web1}
-              />
-            </div>
-            <div className="basis-1/4 flex-2 ">
-              <Image
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web1}
-              />
-            </div>
-            <div className="basis-1/4 flex-2 ">
-              <Image
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web1}
-              />
-            </div>
-
-          </div> */}
+      
 
       </section>
     </>
