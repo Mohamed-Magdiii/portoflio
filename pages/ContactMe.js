@@ -46,18 +46,18 @@ const ContactMe = () => {
                       Contact Me
                    </h2>
                    <div className="text-base text-body-color leading-relaxed mb-9">
-                        <div className="grid gap-5 text-white justify-center text-2xl font-Poppins">
+                        <div className="grid gap-5 text-white justify-center lg:text-2xl md:text-xl sm:text-lg font-Poppins">
             <div className="flex items-center text-black gap-1">
               <AiOutlineMail />
-              <p>Mohamed.magdy.imosa@gmail.com</p>
+              <span>Mohamed.magdy.imosa@gmail.com</span>
             </div>
             <div className="flex items-center text-black gap-1">
               <AiFillPhone />
-              <p>+20 01129090515</p>
+              <span>+20 01129090515</span>
             </div>
             <div className="flex items-center text-black gap-1">
               <ImLocation />
-              <p>Hdaiq El Qubba</p>
+              <span>Hdaiq El Qubba</span>
             </div>
           </div>
                    </div>
