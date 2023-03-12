@@ -23,16 +23,16 @@ const ContactMe = () => {
   };
   return (
    
-   <section class="bg-white py-10 rounded-xl lg:py-[40px] overflow-hidden relative z-10">
-      <div class="container">
-         <div class="flex flex-wrap lg:justify-between -mx-4">
-            <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
-               <div class="max-w-[570px] mb-12 lg:mb-0">
-                  <span class="block mb-4 text-base text-primary font-semibold">
+   <section className="bg-white py-10 rounded-xl lg:py-[40px] overflow-hidden relative z-10">
+      <div className="container">
+         <div className="flex flex-wrap lg:justify-between -mx-4">
+            <div className="w-full lg:w-1/2 xl:w-6/12 px-4">
+               <div className="max-w-[570px] mb-12 lg:mb-0">
+                  <span className="block mb-4 text-base text-primary font-semibold">
                   Contact Me
                   </span>
                   <h2
-                     class="
+                     className="
                      text-dark
                      mb-6
                      uppercase
@@ -64,8 +64,8 @@ const ContactMe = () => {
    
                </div>
             </div>
-            <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
-               <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
+            <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
+               <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
                   <form onSubmit={sendEmail}>
                   <div className="mb-6">
                        <input
@@ -143,7 +143,7 @@ const ContactMe = () => {
                        </div>
                   </form>
                   <div>
-                     <span class="absolute -top-10 -right-9 z-[-1]">
+                     <span className="absolute -top-10 -right-9 z-[-1]">
                         <svg
                            width="100"
                            height="100"
@@ -159,7 +159,7 @@ const ContactMe = () => {
                               />
                         </svg>
                      </span>
-                     <span class="absolute -right-10 top-[90px] z-[-1]">
+                     <span className="absolute -right-10 top-[90px] z-[-1]">
                         <svg
                            width="34"
                            height="134"
@@ -379,7 +379,7 @@ const ContactMe = () => {
                               />
                         </svg>
                      </span>
-                     <span class="absolute -left-7 -bottom-7 z-[-1]">
+                     <span className="absolute -left-7 -bottom-7 z-[-1]">
                         <svg
                            width="107"
                            height="134"
