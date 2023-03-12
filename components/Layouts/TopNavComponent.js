@@ -18,7 +18,7 @@ const TopNavComponent = ({handleClick})=>{
         })
     }
     return (
-        <section >
+        <section className='mb-9' >
         <nav className="py-10 mb-10 flex justify-between dark:text-white">
           <h1 className="font-burtons text-2xl">Megz</h1>
           <ul className="flex items-center">

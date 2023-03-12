@@ -42,7 +42,7 @@ const Intro = ()=>{
             }
     }
     return (
-        <div className="text-center max-h-screen lg:flex my-10 py-10">
+        <div className="text-center max-h-screen lg:flex my-10">
         <div className='mt-9' >
           <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-600 md:text-6xl">
             Hi, I'm Mohamed Magdy
