@@ -3,6 +3,21 @@ import { AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+ 
+const alertContent = () => {
+   MySwal.fire({
+       title: 'Thanks For Contacting Me!',
+       text: 'Your message was successfully send.',
+       icon: 'success',
+       timer: 2000,
+       timerProgressBar: true,
+       showConfirmButton: false,
+   })
+}
 
 const ContactMe = () => {
   const form = useRef();
@@ -15,12 +30,15 @@ const ContactMe = () => {
 
     emailjs.sendForm("service_crm3sla","template_462wnfr", e.target, 'ysrbXtjdT83eTNVLq')
       .then((result) => {
+				alertContent();
           console.log(result.text);
       }, (error) => {
           console.log(error.text);
       });
        handleShowSubmit()
   };
+
+
   return (
    
    <section className="bg-white py-10 rounded-xl lg:py-[40px] overflow-hidden relative z-10">
@@ -53,7 +71,7 @@ const ContactMe = () => {
              </div>
              <div className="flex items-center text-black gap-1">
                <AiFillPhone />
-               <span>+20 01129090515</span>
+               <span >+20 <a href="phoneto:01129090515" className="no-underline text-black">01129090515</a></span>
              </div>
              <div className="flex items-center text-black gap-1">
                <ImLocation />
@@ -152,8 +170,8 @@ const ContactMe = () => {
                            xmlns="http://www.w3.org/2000/svg"
                            >
                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M0 100C0 44.7715 0 0 0 0C55.2285 0 100 44.7715 100 100C100 100 100 100 0 100Z"
                               fill="#3056D3"
                               />
