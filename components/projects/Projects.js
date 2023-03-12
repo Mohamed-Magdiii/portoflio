@@ -34,7 +34,7 @@ const Projects = () => {
     >
       <Tab eventKey="home" title="Real Projects">
       <Swiper
-          spaceBetween={30}
+          spaceBetween={10}
           hashNavigation={{
             watchState: true,
           }}
