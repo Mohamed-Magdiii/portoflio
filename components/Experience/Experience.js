@@ -32,25 +32,25 @@ const Experience = () => {
             design theory.
           </p>
           <h4 className="py-4 text-teal-600">Technologies I Use</h4>
-          <div className="grid grid-cols-2 py-4 ">
-            <div className="text-gray-800 py-1  flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+          <div className="grid grid-cols-2 py-4  gap-2">
+          <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>HMTL</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>CSS</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>JavaScript</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>React JS</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>Next JS</span>
             </div>
           </div>
@@ -65,31 +65,31 @@ const Experience = () => {
             reality, With dynamic data and save all your data in your database.
           </p>
           <h4 className="py-4 text-teal-600">Technologies I Use</h4>
-          <div className="grid grid-cols-2 py-4 ">
-            <div className="text-gray-800 py-1  flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
-              <span>Node JS</span>
+          <div className="grid grid-cols-2 gap-2 py-4  ">
+          <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>NodeJS</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>MongoDB</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>OracleDB</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>JavaScript</span>
             </div>
-            <div className="text-gray-800 py-1 flex gap-2">
-              <BsPatchCheckFill></BsPatchCheckFill>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
               <span>Java</span>
             </div>
           </div>
         </div>
+        </div>
 
-      </div>
     </section>
   );
 };
