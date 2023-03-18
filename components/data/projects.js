@@ -15,7 +15,7 @@ const realProjects = [
         project:"Sata Mall",
         description:"Developed Web application multivendors to Buy and Sell Products online with making orders and delivery.",
         techs : [
-                "NodeJS","ReactJS - Redux (Thunk)", "MongoDB" 
+                "NodeJS","ReactJS", "MongoDB" 
         ],
         github:"https://github.com/Mohamed-Magdiii/sata-ecommerce-app.git",
         demo: null,
@@ -38,7 +38,7 @@ const realProjects = [
         project:"Mahsoly Project (Graduation project for ITI)",
         description:"Developed Web application Buy and Sell Lands and crops online. The idea of project to eliminate brokers between owner of crops and lands with clients so you can buy and sell with clients directly ",
         techs : [
-                "NodeJS","ReactJS - Redux (Thunk)", "MongoDB"
+                "NodeJS","ReactJS", "MongoDB"
         ],
         github:"https://github.com/Mohamed-Magdiii/Mahsoly.git",
         demo: null,
@@ -80,7 +80,7 @@ const learningProjects = [
         project:"Social network app",
         description:"MERN stack application from the \"MERN Stack Front To Back\" It is a small social network app that includes authentication, profiles and forum posts.",
         techs : [
-                "Nodejs","React JS (Redux-Thunk)", "MongoDB", "HTML5" , "CSS3",
+                "Nodejs","React JS", "MongoDB", "HTML5" , "CSS3",
         ],
         github:"https://github.com/Mohamed-Magdiii/social-developer-ap.git",
         demo: null,
