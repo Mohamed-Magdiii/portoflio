@@ -3,7 +3,8 @@ import { useState } from "react";
 import { BsPatchCheckFill } from "react-icons/bs";
 import { HashNavigation, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { realProjects } from "../data/projects";
+import { learningProjects, realProjects } from "../data/projects";
+import { Tab, Tabs } from 'react-bootstrap'
 
 const Projects = () => {
   const [toggler, setToggler] = useState();
@@ -26,8 +27,13 @@ const Projects = () => {
           </p>
 
         </div>
-
-        <Swiper
+        <Tabs
+      defaultActiveKey="profile"
+      id="uncontrolled-tab-example"
+      className="mb-3"
+    >
+      <Tab eventKey="home" title="Real Projects">
+      <Swiper
           spaceBetween={30}
           hashNavigation={{
             watchState: true,
@@ -87,6 +93,71 @@ const Projects = () => {
 
         </Swiper>
       
+      </Tab>
+      <Tab eventKey="profile" title="Learning Projects">
+      <Swiper
+          spaceBetween={30}
+          hashNavigation={{
+            watchState: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation, HashNavigation]}
+          className="mySwiper"
+        >
+          {
+            learningProjects.map((project, index) => 
+            <SwiperSlide key={index}>
+            <div className="lg:flex lg:justify-center">
+              <div className="bg-white lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
+                <div className="lg:w-1/2">
+                  <div className="h-64 bg-cover lg:rounded-lg lg:h-full cursor-pointer" onClick={()=> {setImages(project.images) 
+                   !toggler ? setToggler(true) : setToggler(false) 
+                  }} style={{ backgroundImage: `url(${project.images[0]})`}}></div>
+                </div>
+                <div className="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
+                  <h2 className="text-3xl text-gray-800 font-bold">{project.project}</h2>
+                  <p className="mt-4 text-gray-600">{project.description}</p>
+                  <div className=" relative  rounded-xl  dark:bg-white flex-1">
+           <div className="grid grid-cols-2 py-4 ">
+           {project.techs.map((tech, index) => (
+            <div className="text-gray-800 py-1  flex gap-2" key={index}>
+            <BsPatchCheckFill></BsPatchCheckFill>
+            <span>{tech}</span>
+          </div>
+           ))}
+          
+        
+           </div>
+         </div>
+                  <div className="flex gap-5">
+
+                  {
+                    project.demo && <div className="mt-8">
+                    <a href={project.demo} className="bg-gray-900 text-gray-100 px-5 py-3 font-semibold rounded">Demo</a>
+                  </div>
+                  }
+                   {
+                    project.github && <div className="mt-8">
+                    <a href={project.github} target="blank" className="bg-gray-900 text-gray-100 px-5 py-3 font-semibold rounded">Github</a>
+                  </div>
+                  }
+                  </div>
+                </div>
+              </div>
+            </div>
+        </SwiperSlide>
+)
+          }
+   
+
+        </Swiper>
+      </Tab>
+     
+    </Tabs>
+       
 
       </section>
     </>
