@@ -98,5 +98,4 @@ const learningProjects = [
     
 ]
 
-
 module.exports = {realProjects, learningProjects}
