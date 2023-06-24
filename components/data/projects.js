@@ -53,8 +53,6 @@ const realProjects = [
     },
 ]
 
-<<<<<<< HEAD
-=======
 const learningProjects = [
     {  
         project:"Booking App",
@@ -99,6 +97,5 @@ const learningProjects = [
     },
     
 ]
->>>>>>> 79b7143033aee7d67b47e66720bec45ad231b2c9
 
-module.exports = {realProjects}
+module.exports = {realProjects, learningProjects}
