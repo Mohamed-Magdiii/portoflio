@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from "react";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { BsPatchCheckFill } from "react-icons/bs";
 const MySwal = withReactContent(Swal)
 
  
@@ -28,8 +29,13 @@ const ContactMe = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
  
     emailjs.sendForm("service_crm3sla","template_462wnfr", e.target, 'ysrbXtjdT83eTNVLq')
+=======
+
+    emailjs.sendForm("service_crm3sla","template_ic4hihe", e.target, 'ysrbXtjdT83eTNVLq')
+>>>>>>> e7955a57e1da638fc832df2d69d56cd638d1e3a1
       .then((result) => {
 				alertContent();
           console.log(result.text);
@@ -50,49 +56,130 @@ if(user_name){
 }
 }
   return (
-   
-   <section className="bg-white py-5 lg:py-[30px] overflow-hidden relative z-10 rounded-lg">
-   <div className="container">
-      <div className="flex flex-wrap lg:justify-between -mx-1">
-         <div className="w-full lg:w-1/2 xl:w-6/12 px-1">
-            <div className="max-w-[570px] mb-12 lg:mb-0">
-               <span className="block mb-4 text-base  font-semibold">
-               Contact Me
-               </span>
-               <h2
-                  className="
-                  text-dark
-                  mb-6
-                  uppercase
-                  font-bold
-                  text-[32px]
-                  sm:text-[40px]
-                  lg:text-[36px]
-                  xl:text-[40px]
-                  "
-                  >
-                  GET IN TOUCH WITH Me
-               </h2>
-               <div className="text-base text-body-color mb-9">
-               <div className="flex items-center text-black gap-1">
-               <AiOutlineMail />
-               <span >Hate forms? Send me an <a href="mailto:mohamed.magdy.imosa@gmail.com" className=" text-black sm:text-sm">email</a> instead.</span>
-             </div>
-               </div>
-               <div className="text-base text-body-color mb-9">
-               <div className="flex items-center text-black gap-1">
-               <AiFillPhone />
-               <span >+20 <a href="phoneto:01129090515" className="no-underline text-black">01129090515</a></span>
-             </div>
-               </div>
-               <div className="text-base text-body-color mb-9">
-               <div className="flex items-center text-black gap-1">
-               <ImLocation />
-               <span>Hdaiq El Qubba, Cairo, Egypt</span>
-             </div>
-               </div>
+        <div className="contact-area ptb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                <div className="col-lg-5">
+						<div className="quick-contact">
+							<h3 className="text-center">Contact Info</h3>
+							<ul>
+								<li>
+									Location:
+                           <div className="flex gap-2">
+                           <BsPatchCheckFill></BsPatchCheckFill>
+									<span >Cairo, Egypt</span>
+                           </div>
+								</li>
+								<li>
+                        Call Me:
+                           <div className="flex gap-2">
+                           <AiFillPhone></AiFillPhone>
+									<a href="tel:+2001129090515" style={{textDecoration:"none"}}>+20 01129090515</a>
+                           </div>
+									
+								</li>
+								<li>
+									Email Me:
+                           <div className="flex gap-2">
+                           <AiOutlineMail></AiOutlineMail>
+                           <a href="mailto:mohamed.magdy.imosa@gmail.com" style={{textDecoration:"none"}}>
+									   mohamed.magdy.imosa@gmail.com
+									</a>
+                           </div>
+									
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div className="col-lg-7">
+						<div className="contact-wrap">
+							<div className="contact-form">
+								<div className="section-title">
+									<h2>{'Drop Us A Message For Any Query'}</h2>
+								</div>
+								<form onSubmit={(e)=>sendEmail(e)} >
+									<div className="row">
+										<div className="col-lg-6 col-sm-6">
+											<div className="form-group">
+												<input 
+													type="text" 
+													name="from_name" 
+													placeholder={'Name'} 
+													className="form-control" 
+													// value={contact.name}
+													// onChange={handleChange} 
+													required 
+												/>
+											</div>
+										</div>
+										<div className="col-lg-6 col-sm-6">
+											<div className="form-group">
+												<input 
+													type="text" 
+													name="email" 
+													placeholder={"Email"} 
+													className="form-control" 
+													// value={contact.email}
+													// onChange={handleChange} 
+													required 
+												/>
+											</div>
+										</div>
+										<div className="col-lg-6 col-sm-6">
+											<div className="form-group">
+												<input 
+													type="text" 
+													name="number" 
+													placeholder={"Phone number"}
+													className="form-control" 
+													// value={contact.number}
+													// onChange={handleChange} 
+													required 
+												/>
+											</div>
+										</div>
+										<div className="col-lg-6 col-sm-6">
+											<div className="form-group">
+												<input 
+													type="text" 
+													name="subject" 
+													placeholder="Subject" 
+													className="form-control" 
+													// value={contact.subject}
+													// onChange={handleChange} 
+													required 
+												/>
+											</div>
+										</div>
+										<div className="col-lg-12 col-md-12">
+											<div className="form-group">
+												<textarea 
+													name="message" 
+													cols="30" 
+													rows="6" 
+													placeholder={`Write your message ...`} 
+													className="form-control" 
+													// value={contact.text}
+													// onChange={handleChange} 
+													required 
+												/>
+											</div>
+										</div>
+										<div className="col-lg-12 col-sm-12">
+											<button type="submit" className="default-btn page-btn">
+												Send Message
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+                    </div>
 
+			
+                </div>
             </div>
+<<<<<<< HEAD
             <div className="mt-8 text-center">
             <img src="/contact.jpg" />
           </div>
@@ -992,6 +1079,9 @@ if(user_name){
       </div>
    </div>
 </section>
+=======
+        </div>
+>>>>>>> e7955a57e1da638fc832df2d69d56cd638d1e3a1
     
   );
 };
