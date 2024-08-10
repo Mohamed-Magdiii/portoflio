@@ -24,10 +24,11 @@ const ContactMe = () => {
   const [showSubmit, setShowSubmit] = useState(false);
   const handleCloseSubmit = () => setShowSubmit(false);
   const handleShowSubmit = () => setShowSubmit(true);
+  const [isDisabled ,setIsDisabled] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+ 
     emailjs.sendForm("service_crm3sla","template_462wnfr", e.target, 'ysrbXtjdT83eTNVLq')
       .then((result) => {
 				alertContent();
@@ -38,7 +39,16 @@ const ContactMe = () => {
        handleShowSubmit()
   };
 
+const handleOnChange = ()=>{
+  const myForm = document.forms["myForm"];
+  const user_name = myForm["user_name"].value.trim() !== '';
+if(user_name){
+   setIsDisabled(false)
 
+}else{
+   setIsDisabled(true)
+}
+}
   return (
    
    <section className="bg-white py-5 lg:py-[30px] overflow-hidden relative z-10 rounded-lg">
@@ -89,7 +99,7 @@ const ContactMe = () => {
          </div>
          <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
             <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-            <form onSubmit={sendEmail}>
+            <form onSubmit={sendEmail} name="myForm">
       <div className="mb-6">
          <input
         type="text"
@@ -162,6 +172,7 @@ const ContactMe = () => {
         transition
         hover:bg-opacity-90
         "
+        disabled={isDisabled}
         >
      Send Message
      </button>
