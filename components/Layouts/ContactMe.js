@@ -25,10 +25,10 @@ const ContactMe = () => {
   const [showSubmit, setShowSubmit] = useState(false);
   const handleCloseSubmit = () => setShowSubmit(false);
   const handleShowSubmit = () => setShowSubmit(true);
+  const [isDisabled ,setIsDisabled] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm("service_crm3sla","template_ic4hihe", e.target, 'ysrbXtjdT83eTNVLq')
       .then((result) => {
 				alertContent();
@@ -39,7 +39,22 @@ const ContactMe = () => {
        handleShowSubmit()
   };
 
+const handleChange = ()=>{
+  const myForm = document.forms["myForm"];
+  const user_name = myForm["from_name"].value.trim() !== '';
+  const email = myForm["email"].value.trim() !== '';
+  const subject = myForm["subject"].value.trim() !== '';
+  const message = myForm["message"].value.trim() !== '';
+  
+  console.log(user_name);
+  
+if(user_name  && email && subject && message){
+   setIsDisabled(false)
 
+}else{
+   setIsDisabled(true)
+}
+}
   return (
         <div className="contact-area ptb-100">
             <div className="container">
@@ -82,17 +97,17 @@ const ContactMe = () => {
 								<div className="section-title">
 									<h2>{'Drop Us A Message For Any Query'}</h2>
 								</div>
-								<form onSubmit={(e)=>sendEmail(e)} >
+								<form onSubmit={(e)=>sendEmail(e)} name="myForm" >
 									<div className="row">
 										<div className="col-lg-6 col-sm-6">
 											<div className="form-group">
 												<input 
 													type="text" 
 													name="from_name" 
-													placeholder={'Name'} 
+													placeholder={'Name *'} 
 													className="form-control" 
 													// value={contact.name}
-													// onChange={handleChange} 
+													onChange={handleChange} 
 													required 
 												/>
 											</div>
@@ -100,12 +115,12 @@ const ContactMe = () => {
 										<div className="col-lg-6 col-sm-6">
 											<div className="form-group">
 												<input 
-													type="text" 
+													type="email" 
 													name="email" 
-													placeholder={"Email"} 
+													placeholder={"Email *"} 
 													className="form-control" 
 													// value={contact.email}
-													// onChange={handleChange} 
+													onChange={handleChange} 
 													required 
 												/>
 											</div>
@@ -119,7 +134,7 @@ const ContactMe = () => {
 													className="form-control" 
 													// value={contact.number}
 													// onChange={handleChange} 
-													required 
+													 
 												/>
 											</div>
 										</div>
@@ -128,10 +143,10 @@ const ContactMe = () => {
 												<input 
 													type="text" 
 													name="subject" 
-													placeholder="Subject" 
+													placeholder="Subject *" 
 													className="form-control" 
 													// value={contact.subject}
-													// onChange={handleChange} 
+													onChange={handleChange} 
 													required 
 												/>
 											</div>
@@ -141,17 +156,17 @@ const ContactMe = () => {
 												<textarea 
 													name="message" 
 													cols="30" 
-													rows="6" 
-													placeholder={`Write your message ...`} 
+													rows="6"  
+													placeholder={`Write your message ... *`} 
 													className="form-control" 
 													// value={contact.text}
-													// onChange={handleChange} 
+													onChange={handleChange} 
 													required 
 												/>
 											</div>
 										</div>
 										<div className="col-lg-12 col-sm-12">
-											<button type="submit" className="default-btn page-btn">
+											<button type="submit" className="default-btn page-btn" disabled={isDisabled}>
 												Send Message
 											</button>
 										</div>

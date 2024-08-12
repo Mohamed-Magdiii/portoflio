@@ -5,14 +5,14 @@ import Intro from './../Intro/Intro';
 const TopNavComponent = ({handleClick})=>{
     const onButtonClick = () => {
         // using Java Script method to get PDF file
-        fetch('Mohamed-Magdy-JavaScript-developer.pdf').then(response => {
+        fetch('Mohamed-Magdy-Resume.pdf').then(response => {
             response.blob().then(blob => {
                 // Creating new object of PDF file
                 const fileURL = window.URL.createObjectURL(blob);
                 // Setting various property values
                 let alink = document.createElement('a');
                 alink.href = fileURL;
-                alink.download = 'Mohamed-Magdy-JavaScript-developer.pdf';
+                alink.download = 'Mohamed-Magdy-Resume.pdf';
                 alink.click();
             })
         })
