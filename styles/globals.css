@@ -306,3 +306,11 @@ Service Area Two Style
   font-size: 15px;
   color: #ffffff;
 }
+
+
+
+.default-btn:disabled {
+  background-color: #6c757d; /* Darker color for disabled state */
+  color: #ffffff; /* Keep text color white */
+  cursor: not-allowed; /* Change cursor to indicate it's disabled */
+}

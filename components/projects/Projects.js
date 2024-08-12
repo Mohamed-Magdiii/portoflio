@@ -1,12 +1,9 @@
 import FsLightbox from "fslightbox-react";
 import { useState } from "react";
 import { BsPatchCheckFill } from "react-icons/bs";
-import { HashNavigation, Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {  Navigation } from "swiper";
 import { learningProjects, realProjects } from "../data/projects";
 import { Tab, Tabs } from 'react-bootstrap'
-import { AiFillPhone } from "react-icons/ai";
-import Link from 'next/link';
 
 const Projects = () => {
   const [toggler, setToggler] = useState();
@@ -48,11 +45,11 @@ const Projects = () => {
 
         </div>
         <Tabs
-          defaultActiveKey="profile"
+          defaultActiveKey="home"
           id="uncontrolled-tab-example"
           className="mb-3 d-flex justify-content-center"
         >
-          <Tab eventKey="home" title="Real Projects" className="text-black">
+          <Tab eventKey="home" title="Real Projects" className="  ">
             <div className="service-area-two pt-100 pb-70" >
               <div className="container">
                 <div className="row d-flex justify-content-center">

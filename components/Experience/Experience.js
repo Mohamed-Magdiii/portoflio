@@ -2,7 +2,7 @@ import Image from "next/image";
 import { BsPatchCheckFill } from "react-icons/bs";
 import code from "/public/code.png";
 import design from "/public/design.png";
-
+import browser from "/public/browser.png";
 
 const Experience = () => {
   return (
@@ -84,6 +84,40 @@ const Experience = () => {
               <span>Java</span>
             </div>
           </div>
+        </div>
+        <div className="text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
+          <Image src={browser} width={100} height={100} />
+          <h3 className="text-lg font-medium pt-8 pb-2 ">
+            Low Code Development
+          </h3>
+          <p className="py-2">
+            Do you have an idea for your next great website? Let s make it a
+            reality, With dynamic data and save all your data in your database with faster and lower cost.
+          </p>
+          <h4 className="py-4 text-teal-600">Technologies I Use</h4>
+          <div className="grid grid-cols-2 gap-2 py-4  ">
+          <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>Outsystems</span>
+            </div>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>Sql Database</span>
+            </div>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>JavaScript</span>
+            </div>
+            <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>HTML/Html5 - CSS</span>
+            </div>
+           
+          </div>
+          <div className="flex items-center text-black gap-1">
+            <BsPatchCheckFill />
+              <span>Outsystems Architecture Canvas</span>
+            </div>
         </div>
         </div>
 
