@@ -2,14 +2,12 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
+        <meta name="description" content="Portfolio of Mohamed Magdy — Full Stack & OutSystems Developer" />
+        <meta name="theme-color" content="#0f172a" />
       </Head>
-      <body className="font-poppins">
+      <body className="font-sans antialiased">
         <Main />
         <NextScript />
       </body>

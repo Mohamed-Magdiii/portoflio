@@ -1,126 +1,87 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Image from "next/image";
 import { BsPatchCheckFill } from "react-icons/bs";
 import code from "/public/code.png";
 import design from "/public/design.png";
 import browser from "/public/browser.png";
 
+const cards = [
+  {
+    title: "Front End Development",
+    icon: design,
+    alt: "Frontend development",
+    description:
+      "Creating elegant, responsive interfaces suited to your needs while following core design theory.",
+    techs: ["HTML5", "CSS3", "JavaScript", "React JS", "Next.js"],
+  },
+  {
+    title: "Back End Development",
+    icon: code,
+    alt: "Backend development",
+    description:
+      "Bringing your next great website to life with dynamic data and everything safely stored in a database.",
+    techs: ["NodeJS", "MongoDB", "OracleDB", "Express", "Java"],
+  },
+  {
+    title: "Low Code Development",
+    icon: browser,
+    alt: "Low code development",
+    description:
+      "Delivering dynamic business applications faster and at lower cost using OutSystems.",
+    techs: ["OutSystems", "SQL Database", "JavaScript", "Architecture Canvas"],
+  },
+];
+
 const Experience = () => {
   return (
-    <section>
-      <div>
-        <h3 className="text-3xl py-1 dark:text-white ">Experiences</h3>
-        <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-        With my experience as a web developer, I have collaborated with talented individuals and consulted for startups to create elegant digital products that meet business and consumer needs.
-          {/* <span className="text-teal-500"> agencies </span>
-          consulted for <span className="text-teal-500">startups </span>
-          and collaborated with talanted people to create digital products
-          for both business and consumer use. */}
-        </p>
-        
-      </div>
-      <div className="lg:flex gap-10">
-        <div className="text-center shadow-lg p-10 rounded-xl my-10  dark:bg-white flex-1">
-          <Image src={design} width={100} height={100} />
-          <h3 className="text-lg font-medium pt-8 pb-2  ">
-            Front End Development
-          </h3>
-          <p className="py-2">
-            Creating elegant designs suited for your needs following core
-            design theory.
-          </p>
-          <h4 className="py-4 text-teal-600">Technologies I Use</h4>
-          <div className="grid grid-cols-2 py-4  gap-2">
-          <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>HMTL</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>CSS</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>JavaScript</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>React JS</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>Next JS</span>
-            </div>
-          </div>
-        </div>
-        <div className="text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
-          <Image src={code} width={100} height={100} />
-          <h3 className="text-lg font-medium pt-8 pb-2 ">
-            Back End Development
-          </h3>
-          <p className="py-2">
-            Do you have an idea for your next great website? Let s make it a
-            reality, With dynamic data and save all your data in your database.
-          </p>
-          <h4 className="py-4 text-teal-600">Technologies I Use</h4>
-          <div className="grid grid-cols-2 gap-2 py-4  ">
-          <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>NodeJS</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>MongoDB</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>OracleDB</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>JavaScript</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>Java</span>
-            </div>
-          </div>
-        </div>
-        <div className="text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
-          <Image src={browser} width={100} height={100} />
-          <h3 className="text-lg font-medium pt-8 pb-2 ">
-            Low Code Development
-          </h3>
-          <p className="py-2">
-            Do you have an idea for your next great website? Let s make it a
-            reality, With dynamic data and save all your data in your database with faster and lower cost.
-          </p>
-          <h4 className="py-4 text-teal-600">Technologies I Use</h4>
-          <div className="grid grid-cols-2 gap-2 py-4  ">
-          <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>Outsystems</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>Sql Database</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>JavaScript</span>
-            </div>
-            <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>HTML/Html5 - CSS</span>
-            </div>
-           
-          </div>
-          <div className="flex items-center text-black gap-1">
-            <BsPatchCheckFill />
-              <span>Outsystems Architecture Canvas</span>
-            </div>
-        </div>
-        </div>
+    <section id="experience" className="scroll-mt-24 py-16">
+      <p className="section-title">Experience</p>
+      <h3 className="section-heading">
+        What I <span className="gradient-text">bring to the table</span>
+      </h3>
+      <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+        As a web developer I've collaborated with talented people and consulted
+        for startups to create digital products that meet business and consumer
+        needs.
+      </p>
 
+      <div className="mt-10 grid gap-8 md:grid-cols-3">
+        {cards.map((card) => (
+          <div
+            key={card.title}
+            className="glass flex flex-col items-center p-8 text-center transition-transform duration-300 hover:-translate-y-2"
+          >
+            <div className="grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-teal-500/15 to-indigo-500/15">
+              <Image
+                src={card.icon}
+                width={64}
+                height={64}
+                alt={card.alt}
+                className="h-16 w-16 object-contain"
+              />
+            </div>
+            <h4 className="mt-6 font-display text-xl font-bold">{card.title}</h4>
+            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+              {card.description}
+            </p>
+            <h5 className="mt-6 w-full text-sm font-semibold uppercase tracking-widest text-teal-600 dark:text-teal-400">
+              Technologies I Use
+            </h5>
+            <ul className="mt-4 grid w-full grid-cols-2 gap-3">
+              {card.techs.map((tech) => (
+                <li
+                  key={tech}
+                  className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200"
+                >
+                  <BsPatchCheckFill className="shrink-0 text-teal-500" />
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
