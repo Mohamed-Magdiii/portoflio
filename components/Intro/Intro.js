@@ -111,14 +111,14 @@ const Intro = ({ content }) => {
             </div>
           </div>
         </div>
-        <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="mt-6 flex items-center justify-center gap-6">
           <div className="flex flex-col items-center">
             <Image
               src={o11Badge}
               alt="OutSystems Associate Developer - O11"
               width={72}
               height={72}
-              className="h-16 w-16 rounded-full bg-white object-contain shadow-lg dark:bg-slate-900"
+              className="h-16 w-16 object-contain drop-shadow-lg"
             />
             <span className="mt-2 text-center text-xs font-medium text-slate-600 dark:text-slate-300">
               Associate Developer
@@ -132,7 +132,7 @@ const Intro = ({ content }) => {
               alt="OutSystems Associate Developer - ODC"
               width={72}
               height={72}
-              className="h-16 w-16 rounded-full bg-white object-contain shadow-lg dark:bg-slate-900"
+              className="h-16 w-16 object-contain drop-shadow-lg"
             />
             <span className="mt-2 text-center text-xs font-medium text-slate-600 dark:text-slate-300">
               Associate Developer
