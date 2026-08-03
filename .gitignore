@@ -24,6 +24,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+dev-server.log
+
+# backend
+/backend/node_modules
+/backend/*.log
+
+# secrets (never commit)
+atlas-credentials.env
 
 # local env files
 .env*.local

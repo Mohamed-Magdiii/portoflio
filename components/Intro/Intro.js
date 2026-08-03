@@ -1,24 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import {
-  AiFillLinkedin,
-  AiFillGithub,
-  AiOutlineMail,
-} from "react-icons/ai";
+import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { BsDownload } from "react-icons/bs";
 import Image from "next/image";
 import deved from "../../public/mohamed.png";
 import { useState, useEffect } from "react";
 
-const toRotate = [
-  "Web Developer",
-  "Full Stack Developer",
-  "Backend Developer",
-  "Frontend Developer",
-  "OutSystems Developer",
-];
-
-const Intro = () => {
+const Intro = ({ content }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
@@ -26,8 +14,10 @@ const Intro = () => {
   const period = 500;
 
   useEffect(() => {
-    const i = loopNum % toRotate.length;
-    const fullText = toRotate[i];
+    const activeRoles = content?.roles || [];
+    if (activeRoles.length === 0) return;
+    const i = loopNum % activeRoles.length;
+    const fullText = activeRoles[i];
     const updatedText = isDeleting
       ? fullText.substring(0, text.length - 1)
       : fullText.substring(0, text.length + 1);
@@ -48,7 +38,7 @@ const Intro = () => {
     }, delta);
 
     return () => clearTimeout(timer);
-  }, [text, delta, isDeleting, loopNum]);
+  }, [text, delta, isDeleting, loopNum, content?.roles]);
 
   return (
     <section className="grid items-center gap-12 py-16 md:grid-cols-2 lg:py-24">
@@ -58,35 +48,33 @@ const Intro = () => {
           Available for work
         </span>
         <h1 className="font-display text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-          Hi, I'm{" "}
-          <span className="gradient-text">Mohamed Magdy</span>
+          {content?.greeting || "Hi, I'm"}{" "}
+          <span className="gradient-text">{content?.name || "Mohamed Magdy"}</span>
         </h1>
         <h2 className="mt-3 font-display text-2xl font-semibold text-slate-700 dark:text-slate-200 md:text-3xl">
           {text}
           <span className="caret" />
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300 md:mx-0">
-          Full Stack &amp; OutSystems developer building fast, reliable web
-          applications with the MERN stack and low-code platforms. Let's get
-          cracking together.
+          {content?.intro}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
           <a
-            href="Mohamed_Magdy_Senior_Outsystems.pdf"
+            href={content?.resume || "Mohamed_Magdy_Senior_Outsystems.pdf"}
             download
             className="btn-primary"
           >
             <BsDownload />
             Download CV
           </a>
-          <a href="mailto:mohamed.magdy.imosa@gmail.com" className="btn-ghost">
+          <a href={`mailto:${content?.email}`} className="btn-ghost">
             <AiOutlineMail />
             Email me
           </a>
         </div>
         <div className="mt-8 flex justify-center gap-5 text-4xl text-slate-600 dark:text-slate-300 md:justify-start">
           <a
-            href="https://www.linkedin.com/in/mohamed-magdy-outsystems"
+            href={content?.linkedin}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
@@ -95,7 +83,7 @@ const Intro = () => {
             <AiFillLinkedin />
           </a>
           <a
-            href="https://github.com/Mohamed-Magdiii"
+            href={content?.github}
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -111,8 +99,8 @@ const Intro = () => {
           <div className="rounded-full bg-gradient-to-br from-teal-400 via-cyan-400 to-indigo-500 p-2 shadow-2xl shadow-teal-500/30">
             <div className="relative h-56 w-56 overflow-hidden rounded-full md:h-80 md:w-80 lg:h-96 lg:w-96">
               <Image
-                src={deved}
-                alt="Mohamed Magdy"
+                src={content?.avatar || deved}
+                alt={content?.name || "Mohamed Magdy"}
                 fill
                 sizes="(max-width: 768px) 14rem, 24rem"
                 priority

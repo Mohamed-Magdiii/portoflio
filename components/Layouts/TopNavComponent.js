@@ -12,18 +12,19 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const TopNavComponent = ({ handleClick, darkMode }) => {
+const TopNavComponent = ({ handleClick, darkMode, content, site }) => {
   const [downloading, setDownloading] = useState(false);
+  const resume = content?.resume || "Mohamed_Magdy_Senior_Outsystems.pdf";
 
   const onButtonClick = () => {
     setDownloading(true);
-    fetch("Mohamed_Magdy_Senior_Outsystems.pdf")
+    fetch(resume)
       .then((response) => response.blob())
       .then((blob) => {
         const fileURL = window.URL.createObjectURL(blob);
         const alink = document.createElement("a");
         alink.href = fileURL;
-        alink.download = "Mohamed_Magdy_Senior_Outsystems.pdf";
+        alink.download = resume;
         alink.click();
       })
       .finally(() => setDownloading(false));
@@ -33,7 +34,7 @@ const TopNavComponent = ({ handleClick, darkMode }) => {
     <header className="sticky top-0 z-40 border-b border-slate-200/60 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
         <a href="#" className="font-burtons text-3xl gradient-text">
-          Megz
+          {site?.logo || "Megz"}
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

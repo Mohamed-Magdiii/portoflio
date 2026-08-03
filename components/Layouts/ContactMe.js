@@ -21,7 +21,7 @@ const alertContent = () => {
   });
 };
 
-const ContactMe = () => {
+const ContactMe = ({ content }) => {
   const form = useRef();
   const [isDisabled, setIsDisabled] = useState(true);
   const [isSending, setIsSending] = useState(false);
@@ -50,10 +50,9 @@ const ContactMe = () => {
 
   const handleChange = () => {
     const data = new FormData(form.current);
-    const filled =
-      ["from_name", "email", "subject", "message"].every((name) =>
-        data.get(name).toString().trim()
-      );
+    const filled = ["from_name", "email", "subject", "message"].every((name) =>
+      data.get(name).toString().trim()
+    );
     setIsDisabled(!filled);
   };
 
@@ -61,19 +60,19 @@ const ContactMe = () => {
     {
       icon: <ImLocation className="text-2xl" />,
       label: "Location",
-      value: "Cairo, Egypt",
+      value: content?.location,
     },
     {
       icon: <AiFillPhone className="text-2xl" />,
       label: "Call Me",
-      value: "+20 01129090515",
-      href: "tel:+2001129090515",
+      value: content?.phone,
+      href: content?.phone ? `tel:${content.phone.replace(/[^+\d]/g, "")}` : undefined,
     },
     {
       icon: <AiOutlineMail className="text-2xl" />,
       label: "Email Me",
-      value: "mohamed.magdy.imosa@gmail.com",
-      href: "mailto:mohamed.magdy.imosa@gmail.com",
+      value: content?.email,
+      href: content?.email ? `mailto:${content.email}` : undefined,
     },
   ];
 
@@ -81,11 +80,10 @@ const ContactMe = () => {
     <section id="contact" className="scroll-mt-24 py-16">
       <p className="section-title">Contact</p>
       <h3 className="section-heading">
-        Let's build something <span className="gradient-text">great</span>
+        <span className="gradient-text">{content?.heading || "Let's build something great"}</span>
       </h3>
       <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
-        Have a project in mind or just want to say hi? Drop me a message and
-        I'll get back to you.
+        {content?.description}
       </p>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
@@ -120,7 +118,7 @@ const ContactMe = () => {
 
           <div className="mt-auto flex gap-4 pt-4 text-3xl text-slate-600 dark:text-slate-300">
             <a
-              href="https://www.linkedin.com/in/mohamed-magdy-outsystems"
+              href={content?.linkedin}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -129,7 +127,7 @@ const ContactMe = () => {
               <AiFillLinkedin />
             </a>
             <a
-              href="https://github.com/Mohamed-Magdiii"
+              href={content?.github}
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
