@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import contentRoutes from "./routes/content.js";
 import adminRoutes from "./routes/admin.js";
+import blogRoutes from "./routes/blog.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api", contentRoutes);
+app.use("/api", blogRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.use((req, res) => {

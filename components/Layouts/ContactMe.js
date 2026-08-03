@@ -42,7 +42,12 @@ const ContactMe = ({ content }) => {
           form.current.reset();
         },
         (error) => {
-          console.log(error.text);
+          console.error("EmailJS send failed:", error);
+          MySwal.fire({
+            title: "Message Not Sent",
+            text: error.text || "An error occurred while sending your message.",
+            icon: "error",
+          });
         }
       )
       .finally(() => setIsSending(false));

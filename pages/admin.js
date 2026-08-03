@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash, BsExclamationCircleFill } from "react-icons/bs";
 import SectionEditor from "../components/admin/SectionEditor";
+import BlogManager from "../components/admin/BlogManager";
 import { API_URL } from "../lib/api";
 
 const sections = [
@@ -10,6 +11,7 @@ const sections = [
   { key: "experience", label: "Experience" },
   { key: "contact", label: "Contact" },
   { key: "site", label: "Site / SEO" },
+  { key: "blogs", label: "Blogs" },
 ];
 
 function Login({ onLogin }) {
@@ -187,13 +189,17 @@ export default function AdminPage() {
               </span>
             )}
           </div>
-          <SectionEditor
-            key={active}
-            sectionKey={active}
-            data={content[active]}
-            onSave={save}
-            saving={saving}
-          />
+          {active === "blogs" ? (
+            <BlogManager token={token} />
+          ) : (
+            <SectionEditor
+              key={active}
+              sectionKey={active}
+              data={content[active]}
+              onSave={save}
+              saving={saving}
+            />
+          )}
         </main>
       </div>
     </div>

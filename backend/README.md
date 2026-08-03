@@ -8,8 +8,14 @@ Express + MongoDB (Mongoose) API that serves and manages the portfolio content f
 | ------ | --------------------- | ------------------------------------------------ | ----------- |
 | GET    | `/api/health`         | Health check (status + uptime)                   | –           |
 | GET    | `/api/content`        | All content sections (merged over defaults)      | –           |
+| GET    | `/api/blogs`          | Published blog posts (newest first)              | –           |
+| GET    | `/api/blogs/:slug`    | A single published blog post                     | –           |
 | POST   | `/api/admin/login`    | Login with `ADMIN_PASSWORD`, returns JWT         | –           |
-| PUT    | `/api/admin/content/:key` | Update a section (`hero`, `about`, `skills`, `experience`, `contact`, `site`) | `Bearer <token>` |
+| PUT    | `/api/admin/content/:key` | Update a section (`hero`, `about`, `skills`, `experience`, `contact`, `blog`, `site`) | `Bearer <token>` |
+| GET    | `/api/admin/blogs`    | All posts, including drafts                      | `Bearer <token>` |
+| POST   | `/api/admin/blogs`    | Create a blog post (slug auto-generated from title if omitted) | `Bearer <token>` |
+| PUT    | `/api/admin/blogs/:id` | Update a blog post                              | `Bearer <token>` |
+| DELETE | `/api/admin/blogs/:id` | Delete a blog post                              | `Bearer <token>` |
 
 If MongoDB is unreachable or `MONGODB_URI` is missing, `GET /api/content` falls back to the built-in defaults in `lib/defaultContent.js` instead of failing.
 

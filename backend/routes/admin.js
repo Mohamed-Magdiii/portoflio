@@ -2,6 +2,7 @@ import { timingSafeEqual } from "crypto";
 import { Router } from "express";
 import { createToken, verifyToken } from "../lib/auth.js";
 import { updateSection } from "../lib/content.js";
+import { createBlog, deleteBlog, getBlogs, updateBlog } from "../lib/blog.js";
 
 const router = Router();
 
@@ -10,6 +11,18 @@ function safeEqual(a, b) {
   const bBuf = Buffer.from(String(b));
   if (aBuf.length !== bBuf.length) return false;
   return timingSafeEqual(aBuf, bBuf);
+}
+
+async function requireAdmin(req, res, next) {
+  const auth = req.headers.authorization || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+  const payload = token ? await verifyToken(token) : null;
+
+  if (!payload) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  next();
 }
 
 router.post("/login", async (req, res) => {
@@ -24,15 +37,7 @@ router.post("/login", async (req, res) => {
   return res.status(200).json({ token });
 });
 
-router.put("/content/:key", async (req, res) => {
-  const auth = req.headers.authorization || "";
-  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-  const payload = token ? await verifyToken(token) : null;
-
-  if (!payload) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-
+router.put("/content/:key", requireAdmin, async (req, res) => {
   const { key } = req.params;
   const { data } = req.body || {};
 
@@ -49,6 +54,79 @@ router.put("/content/:key", async (req, res) => {
   } catch (error) {
     console.error("Failed to update section:", error);
     return res.status(500).json({ error: "Failed to update section" });
+  }
+});
+
+router.get("/blogs", requireAdmin, async (req, res) => {
+  try {
+    const blogs = await getBlogs({ includeUnpublished: true });
+    return res.status(200).json(blogs);
+  } catch (error) {
+    console.error("Failed to load blogs:", error);
+    return res.status(500).json({ error: "Failed to load blogs" });
+  }
+});
+
+router.post("/blogs", requireAdmin, async (req, res) => {
+  const { title, slug, excerpt, content, tags, cover, published } = req.body || {};
+
+  if (!title) {
+    return res.status(400).json({ error: "Missing title" });
+  }
+
+  try {
+    const blog = await createBlog({
+      title,
+      slug,
+      excerpt,
+      content,
+      tags,
+      cover,
+      published,
+    });
+    if (!blog) {
+      return res.status(400).json({ error: "Failed to create blog" });
+    }
+    return res.status(201).json(blog);
+  } catch (error) {
+    console.error("Failed to create blog:", error);
+    return res.status(500).json({ error: "Failed to create blog" });
+  }
+});
+
+router.put("/blogs/:id", requireAdmin, async (req, res) => {
+  const { title, slug, excerpt, content, tags, cover, published } = req.body || {};
+
+  try {
+    const blog = await updateBlog(req.params.id, {
+      title,
+      slug,
+      excerpt,
+      content,
+      tags,
+      cover,
+      published,
+    });
+    if (!blog) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+    return res.status(200).json(blog);
+  } catch (error) {
+    console.error("Failed to update blog:", error);
+    return res.status(500).json({ error: "Failed to update blog" });
+  }
+});
+
+router.delete("/blogs/:id", requireAdmin, async (req, res) => {
+  try {
+    const blog = await deleteBlog(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+    return res.status(200).json({ ok: true });
+  } catch (error) {
+    console.error("Failed to delete blog:", error);
+    return res.status(500).json({ error: "Failed to delete blog" });
   }
 });
 

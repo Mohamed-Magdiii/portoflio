@@ -118,6 +118,11 @@ export const defaultContent = {
     linkedin: "https://www.linkedin.com/in/mohamed-magdy-outsystems/",
     github: "https://github.com/Mohamed-Magdiii",
   },
+  blog: {
+    heading: "Insights & Articles",
+    description:
+      "Thoughts on OutSystems, full-stack development, and software engineering.",
+  },
   site: {
     logo: "Megz",
     title: "Mohamed Magdy — Senior OutSystems & Full Stack Developer",

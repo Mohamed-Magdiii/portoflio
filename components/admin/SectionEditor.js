@@ -36,6 +36,10 @@ const fields = {
     { name: "linkedin", label: "LinkedIn URL", type: "text" },
     { name: "github", label: "GitHub URL", type: "text" },
   ],
+  blog: [
+    { name: "heading", label: "Heading", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
+  ],
   site: [
     { name: "logo", label: "Logo text", type: "text" },
     { name: "title", label: "Site title (SEO)", type: "text" },
