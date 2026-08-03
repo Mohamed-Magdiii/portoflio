@@ -4,6 +4,8 @@ import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { BsDownload } from "react-icons/bs";
 import Image from "next/image";
 import deved from "../../public/mohamed.png";
+import o11Badge from "../../public/Associate Developer - O11.png";
+import odcBadge from "../../public/Associate Developer - ODC.png";
 import { useState, useEffect } from "react";
 
 const Intro = ({ content }) => {
@@ -107,6 +109,36 @@ const Intro = ({ content }) => {
                 className="object-cover"
               />
             </div>
+          </div>
+        </div>
+        <div className="mt-6 flex items-center justify-center gap-4">
+          <div className="flex flex-col items-center">
+            <Image
+              src={o11Badge}
+              alt="OutSystems Associate Developer - O11"
+              width={72}
+              height={72}
+              className="h-16 w-16 rounded-full bg-white object-contain shadow-lg dark:bg-slate-900"
+            />
+            <span className="mt-2 text-center text-xs font-medium text-slate-600 dark:text-slate-300">
+              Associate Developer
+              <br />
+              O11
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image
+              src={odcBadge}
+              alt="OutSystems Associate Developer - ODC"
+              width={72}
+              height={72}
+              className="h-16 w-16 rounded-full bg-white object-contain shadow-lg dark:bg-slate-900"
+            />
+            <span className="mt-2 text-center text-xs font-medium text-slate-600 dark:text-slate-300">
+              Associate Developer
+              <br />
+              ODC
+            </span>
           </div>
         </div>
       </div>
