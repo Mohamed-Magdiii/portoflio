@@ -50,7 +50,8 @@ const Intro = ({ content }) => {
           Available for work
         </span>
         <h1 className="font-display text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-          {content?.greeting || "Hi, I'm"}{" "}
+          {content?.greeting || "Hi, I'm"}
+          <br />
           <span className="gradient-text">{content?.name || "Mohamed Magdy"}</span>
         </h1>
         <h2 className="mt-3 font-display text-2xl font-semibold text-slate-700 dark:text-slate-200 md:text-3xl">
