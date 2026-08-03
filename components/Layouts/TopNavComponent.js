@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import {
   BsFillMoonStarsFill,
   BsFillSunFill,
@@ -6,11 +7,11 @@ import {
 } from "react-icons/bs";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const TopNavComponent = ({ handleClick, darkMode, content, site }) => {
@@ -34,19 +35,19 @@ const TopNavComponent = ({ handleClick, darkMode, content, site }) => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/60 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href="#" className="font-burtons text-3xl gradient-text">
+        <Link href="/" className="font-burtons text-3xl gradient-text">
           {site?.logo || "Megz"}
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
