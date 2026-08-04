@@ -28,17 +28,19 @@ const Certifications = ({ content }) => {
             key={index}
             className="glass flex items-start gap-4 p-6 transition-transform duration-300 hover:-translate-y-1"
           >
-            <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500/15 to-indigo-500/15">
+            <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-red-500 to-rose-600 shadow-[0_0_18px_rgba(99,102,241,0.5)] ring-2 ring-indigo-400/50">
               {badgeIcons[item.badge] ? (
-                <Image
-                  src={badgeIcons[item.badge]}
-                  alt={item.title}
-                  width={48}
-                  height={48}
-                  className="h-10 w-10 object-contain"
-                />
+                <div className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src={badgeIcons[item.badge]}
+                    alt={item.title}
+                    width={48}
+                    height={48}
+                    className="h-9 w-9 object-contain"
+                  />
+                </div>
               ) : (
-                <BsPatchCheckFill className="text-2xl text-teal-500" />
+                <BsPatchCheckFill className="text-2xl text-white" />
               )}
             </div>
             <div className="min-w-0">
