@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash, BsExclamationCircleFill } from "react-icons/bs";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import SectionEditor from "../components/admin/SectionEditor";
 import BlogManager from "../components/admin/BlogManager";
 import { API_URL } from "../lib/api";
+
+const MySwal = withReactContent(Swal);
 
 const sections = [
   { key: "hero", label: "Hero" },
@@ -101,7 +105,14 @@ export default function AdminPage() {
   useEffect(() => {
     if (!token) return;
     fetch(`${API_URL}/api/content`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401) {
+          localStorage.removeItem("admin_token");
+          setToken(null);
+          return null;
+        }
+        return res.json();
+      })
       .then(setContent)
       .catch(() => setContent(null));
   }, [token]);
@@ -129,12 +140,31 @@ export default function AdminPage() {
         body: JSON.stringify({ data }),
       });
       const json = await res.json();
+      if (res.status === 401) {
+        localStorage.removeItem("admin_token");
+        setToken(null);
+        return;
+      }
       if (!res.ok) throw new Error(json.error || "Save failed");
       setContent((c) => ({ ...c, [active]: data }));
       setMessage("Saved!");
       setTimeout(() => setMessage(""), 2000);
+      MySwal.fire({
+        title: "Saved!",
+        text: "Your changes were saved successfully.",
+        icon: "success",
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
     } catch (err) {
       setMessage(`Error: ${err.message}`);
+      MySwal.fire({
+        title: "Save Failed",
+        text: err.message || "An error occurred while saving your changes.",
+        icon: "error",
+        confirmButtonColor: "#0d9488",
+      });
     } finally {
       setSaving(false);
     }
