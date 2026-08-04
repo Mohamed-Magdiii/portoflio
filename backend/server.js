@@ -1,9 +1,9 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import contentRoutes from "./routes/content.js";
-import adminRoutes from "./routes/admin.js";
-import blogRoutes from "./routes/blog.js";
+import contentRoutes from "./features/content/routes.js";
+import adminRoutes from "./features/admin/routes.js";
+import blogRoutes from "./features/blog/routes.js";
 
 const app = express();
 

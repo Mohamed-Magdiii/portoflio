@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mohamed Magdy — Portfolio
 
-## Getting Started
+A feature-based full-stack monorepo for Mohamed Magdy's portfolio.
 
-First, run the development server:
+## Structure
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+frontend/            Next.js 14 app (deployed to Vercel: mohamed-magdy)
+  pages/             Routes
+  features/          Frontend feature slices
+    profile/         Hero / intro / avatar
+    about/
+    skills/
+    experience/
+    certifications/
+    contact/
+    blog/
+    admin/           Admin panel UI (SectionEditor, BlogManager, Login)
+    layout/          TopNav, Footer
+    _shared/         API client + default content
+  public/            Static assets
+backend/             Express + Mongoose API (deployed to Vercel: portfolio-backend)
+  features/          Backend feature slices
+    content/         Content store + seed + routes
+    blog/            Blog model/service + routes
+    admin/           Admin auth + routes
+    _shared/         MongoDB connection
+  api/index.js       Serverless entry
+  server.js          Local Express server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each feature is self-contained within its side; shared infrastructure lives in
+`_shared`. The two sides are deployed as separate Vercel apps (the backend
+deployment is rooted at `backend/`), so frontend feature slices live in
+`frontend/features/` and backend slices in `backend/features/`.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Development
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+# frontend (http://localhost:3000)
+npm run dev
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# backend (http://localhost:5000)
+npm run backend
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# frontend
+cd frontend && npx vercel --prod
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# backend
+cd backend && npx vercel --prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Environment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `frontend/.env.local` — `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_EMAILJS_*`
+- `backend/.env` — `MONGODB_URI`, `ADMIN_PASSWORD`, `ADMIN_SECRET`

@@ -1,29 +1,12 @@
 {
-  "name": "rectify",
-  "version": "0.1.0",
+  "name": "portfolio-monorepo",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "backend": "npm --prefix backend run dev"
-  },
-  "dependencies": {
-    "@emailjs/browser": "^3.11.0",
-    "fslightbox-react": "^2.0.3",
-    "next": "^14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^4.12.0",
-    "sweetalert2": "^11.10.8",
-    "sweetalert2-react-content": "^5.0.7"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "eslint": "8.57.0",
-    "eslint-config-next": "^14.2.5",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4"
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "backend": "npm --prefix backend run dev",
+    "deploy:frontend": "cd frontend && npx --yes vercel --prod --yes",
+    "deploy:backend": "cd backend && npx --yes vercel --prod --yes"
   }
 }
