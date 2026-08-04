@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsArrowDown, BsArrowUp } from "react-icons/bs";
 
 const fields = {
   hero: [
@@ -55,6 +56,44 @@ const fields = {
 const inputCls =
   "w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100";
 
+const moveItem = (items, index, dir) => {
+  const target = index + dir;
+  if (target < 0 || target >= items.length) return items;
+  const next = [...items];
+  [next[index], next[target]] = [next[target], next[index]];
+  return next;
+};
+
+function MoveButtons({ items, index, onChange, compact }) {
+  const cls = compact
+    ? "grid h-6 w-6 place-items-center rounded-md border border-slate-300 text-slate-500 hover:border-teal-500 hover:text-teal-600 disabled:cursor-not-allowed disabled:opacity-30 dark:border-white/15 dark:text-slate-400"
+    : "grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-slate-300 text-slate-500 hover:border-teal-500 hover:text-teal-600 disabled:cursor-not-allowed disabled:opacity-30 dark:border-white/15 dark:text-slate-400";
+  return (
+    <div className="flex gap-1">
+      <button
+        type="button"
+        title="Move up"
+        aria-label="Move up"
+        disabled={index === 0}
+        onClick={() => onChange(moveItem(items, index, -1))}
+        className={cls}
+      >
+        <BsArrowUp />
+      </button>
+      <button
+        type="button"
+        title="Move down"
+        aria-label="Move down"
+        disabled={index === items.length - 1}
+        onClick={() => onChange(moveItem(items, index, 1))}
+        className={cls}
+      >
+        <BsArrowDown />
+      </button>
+    </div>
+  );
+}
+
 function StringList({ items, onChange }) {
   const update = (index, value) => {
     const next = [...items];
@@ -70,6 +109,7 @@ function StringList({ items, onChange }) {
             value={item}
             onChange={(e) => update(i, e.target.value)}
           />
+          <MoveButtons items={items} index={i} onChange={onChange} />
           <button
             type="button"
             onClick={() => onChange(items.filter((_, j) => j !== i))}
@@ -111,6 +151,7 @@ function StatsEditor({ items, onChange }) {
             value={item.label}
             onChange={(e) => update(i, { label: e.target.value })}
           />
+          <MoveButtons items={items} index={i} onChange={onChange} />
           <button
             type="button"
             onClick={() => onChange(items.filter((_, j) => j !== i))}
@@ -144,13 +185,21 @@ function CardsEditor({ items, onChange }) {
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
               Card {i + 1}
             </span>
-            <button
-              type="button"
-              onClick={() => onChange(items.filter((_, j) => j !== i))}
-              className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
-            >
-              Remove
-            </button>
+            <div className="flex items-center gap-2">
+              <MoveButtons
+                items={items}
+                index={i}
+                onChange={onChange}
+                compact
+              />
+              <button
+                type="button"
+                onClick={() => onChange(items.filter((_, j) => j !== i))}
+                className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
+              >
+                Remove
+              </button>
+            </div>
           </div>
           <div className="space-y-2">
             <input
@@ -213,13 +262,21 @@ function CertsEditor({ items, onChange }) {
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
               Certification {i + 1}
             </span>
-            <button
-              type="button"
-              onClick={() => onChange(items.filter((_, j) => j !== i))}
-              className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
-            >
-              Remove
-            </button>
+            <div className="flex items-center gap-2">
+              <MoveButtons
+                items={items}
+                index={i}
+                onChange={onChange}
+                compact
+              />
+              <button
+                type="button"
+                onClick={() => onChange(items.filter((_, j) => j !== i))}
+                className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
+              >
+                Remove
+              </button>
+            </div>
           </div>
           <div className="space-y-2">
             <input
