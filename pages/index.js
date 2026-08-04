@@ -6,6 +6,7 @@ import Intro from "../components/Intro/Intro";
 import About from "./About";
 import Skills from "./Skills";
 import Experience from "../components/Experience/Experience";
+import Certifications from "../components/Certifications/Certifications";
 import ContactMe from "../components/Layouts/ContactMe";
 import Footer from "../components/Layouts/Footer";
 import { defaultContent } from "../lib/defaultContent";
@@ -125,6 +126,9 @@ export default function Home() {
         <About content={content.about || defaultContent.about} />
         <Skills content={content.skills || defaultContent.skills} />
         <Experience content={content.experience || defaultContent.experience} />
+        <Certifications
+          content={content.certifications || defaultContent.certifications}
+        />
         <ContactMe content={content.contact || defaultContent.contact} />
       </main>
 

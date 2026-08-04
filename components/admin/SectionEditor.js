@@ -40,6 +40,11 @@ const fields = {
     { name: "heading", label: "Heading", type: "text" },
     { name: "description", label: "Description", type: "textarea" },
   ],
+  certifications: [
+    { name: "heading", label: "Heading", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
+    { name: "items", label: "Certifications", type: "certs" },
+  ],
   site: [
     { name: "logo", label: "Logo text", type: "text" },
     { name: "title", label: "Site title (SEO)", type: "text" },
@@ -195,6 +200,77 @@ function CardsEditor({ items, onChange }) {
   );
 }
 
+function CertsEditor({ items, onChange }) {
+  const update = (index, patch) => {
+    const next = items.map((item, j) => (j === index ? { ...item, ...patch } : item));
+    onChange(next);
+  };
+  return (
+    <div className="space-y-4">
+      {items.map((item, i) => (
+        <div key={i} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+              Certification {i + 1}
+            </span>
+            <button
+              type="button"
+              onClick={() => onChange(items.filter((_, j) => j !== i))}
+              className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
+            >
+              Remove
+            </button>
+          </div>
+          <div className="space-y-2">
+            <input
+              className={inputCls}
+              placeholder="Title"
+              value={item.title || ""}
+              onChange={(e) => update(i, { title: e.target.value })}
+            />
+            <input
+              className={inputCls}
+              placeholder="Issuer"
+              value={item.issuer || ""}
+              onChange={(e) => update(i, { issuer: e.target.value })}
+            />
+            <input
+              className={inputCls}
+              placeholder="Date"
+              value={item.date || ""}
+              onChange={(e) => update(i, { date: e.target.value })}
+            />
+            <input
+              className={inputCls}
+              placeholder="Certificate link (optional)"
+              value={item.link || ""}
+              onChange={(e) => update(i, { link: e.target.value })}
+            />
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-slate-500 dark:text-slate-400">Badge key:</span>
+              <input
+                className={inputCls}
+                placeholder="o11 / odc / empty"
+                value={item.badge || ""}
+                onChange={(e) => update(i, { badge: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={() =>
+          onChange([...items, { title: "", issuer: "", date: "", link: "", badge: "" }])
+        }
+        className="rounded-xl border border-teal-500/40 px-4 py-1.5 text-sm font-medium text-teal-600 hover:bg-teal-500/10 dark:text-teal-400"
+      >
+        + Add certification
+      </button>
+    </div>
+  );
+}
+
 function Field({ field, value, onChange }) {
   switch (field.type) {
     case "list":
@@ -203,6 +279,8 @@ function Field({ field, value, onChange }) {
       return <StatsEditor items={value || []} onChange={onChange} />;
     case "cards":
       return <CardsEditor items={value || []} onChange={onChange} />;
+    case "certs":
+      return <CertsEditor items={value || []} onChange={onChange} />;
     case "textarea":
       return (
         <textarea

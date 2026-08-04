@@ -123,6 +123,48 @@ export const defaultContent = {
     description:
       "Thoughts on OutSystems, full-stack development, and software engineering.",
   },
+  certifications: {
+    heading: "Certifications",
+    description:
+      "Professional certifications in OutSystems and full-stack development.",
+    items: [
+      {
+        title: "OutSystems Associate Reactive Developer (O11)",
+        issuer: "OutSystems",
+        date: "2023",
+        link: "https://www.outsystems.com/profile/lpszubqowe/overview",
+        badge: "o11",
+      },
+      {
+        title: "OutSystems Developer Cloud (ODC)",
+        issuer: "OutSystems",
+        date: "2024",
+        link: "https://www.outsystems.com/profile/lpszubqowe/overview",
+        badge: "odc",
+      },
+      {
+        title: "Front-End Web Development with JavaScript & Node.js",
+        issuer: "Udacity — Ministry of Communication and IT",
+        date: "February 2021",
+        link: "https://www.udacity.com/certificate/e/778388a6-7ba4-11eb-9d69-df4518adc6f1",
+        badge: "",
+      },
+      {
+        title: "MongoDB M001: MongoDB Basics Certification",
+        issuer: "MongoDB University",
+        date: "October 2021",
+        link: "https://drive.google.com/drive/folders/1vT8h6tTE7DdDgPJbO-e9OQI8HjwccIbL?usp=sharing",
+        badge: "",
+      },
+      {
+        title: "JavaScript — Certificate of Completion",
+        issuer: "Mahara-Tech (ITI Platform)",
+        date: "",
+        link: "",
+        badge: "",
+      },
+    ],
+  },
   site: {
     logo: "Megz",
     title: "Mohamed Magdy — Senior OutSystems & Full Stack Developer",
