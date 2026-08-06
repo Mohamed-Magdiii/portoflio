@@ -18,11 +18,7 @@ const projectTypes = [
   "Maintenance & support",
   "Full stack web development",
   "Other",
-];
-
-const budgets = ["< $2,000", "$2,000 – $5,000", "$5,000 – $15,000", "$15,000+", "Not sure yet"];
-
-const alertContent = () => {
+];const alertContent = () => {
   MySwal.fire({
     title: "Thanks For Contacting Me!",
     text: "Your message was successfully sent. I'll get back to you soon.",
@@ -258,16 +254,13 @@ const ContactMe = ({ content }) => {
               <label htmlFor="budget" className="mb-1.5 block text-sm font-medium">
                 Estimated budget
               </label>
-              <select id="budget" name="budget" className="field" defaultValue="">
-                <option value="" disabled>
-                  Select a range...
-                </option>
-                {budgets.map((budget) => (
-                  <option key={budget} value={budget}>
-                    {budget}
-                  </option>
-                ))}
-              </select>
+              <input
+                id="budget"
+                type="text"
+                name="budget"
+                placeholder="e.g. $5,000 – $15,000"
+                className="field"
+              />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
