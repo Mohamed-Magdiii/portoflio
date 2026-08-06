@@ -18,6 +18,7 @@ const sections = [
   { key: "contact", label: "Contact" },
   { key: "site", label: "Site / SEO" },
   { key: "blogs", label: "Blogs" },
+  { key: "visitors", label: "Visitors" },
 ];
 
 export default function AdminPage() {
@@ -140,27 +141,32 @@ export default function AdminPage() {
         </aside>
 
         <main className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
-          <VisitorStats />
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-display text-xl font-bold capitalize">
-              {sections.find((s) => s.key === active)?.label}
-            </h2>
-            {message && (
-              <span className="text-sm font-medium text-teal-600 dark:text-teal-400">
-                {message}
-              </span>
-            )}
-          </div>
-          {active === "blogs" ? (
-            <BlogManager token={token} />
+          {active === "visitors" ? (
+            <VisitorStats />
           ) : (
-            <SectionEditor
-              key={active}
-              sectionKey={active}
-              data={content[active]}
-              onSave={save}
-              saving={saving}
-            />
+            <>
+              <div className="mb-6 flex items-center justify-between">
+                <h2 className="font-display text-xl font-bold capitalize">
+                  {sections.find((s) => s.key === active)?.label}
+                </h2>
+                {message && (
+                  <span className="text-sm font-medium text-teal-600 dark:text-teal-400">
+                    {message}
+                  </span>
+                )}
+              </div>
+              {active === "blogs" ? (
+                <BlogManager token={token} />
+              ) : (
+                <SectionEditor
+                  key={active}
+                  sectionKey={active}
+                  data={content[active]}
+                  onSave={save}
+                  saving={saving}
+                />
+              )}
+            </>
           )}
         </main>
       </div>
