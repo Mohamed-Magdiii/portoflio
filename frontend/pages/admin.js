@@ -4,6 +4,7 @@ import withReactContent from "sweetalert2-react-content";
 import SectionEditor from "../features/admin/frontend/SectionEditor";
 import BlogManager from "../features/admin/frontend/BlogManager";
 import Login from "../features/admin/frontend/Login";
+import VisitorStats from "../features/visitors/frontend/VisitorStats";
 import { API_URL } from "../features/_shared/frontend/api";
 
 const MySwal = withReactContent(Swal);
@@ -139,6 +140,7 @@ export default function AdminPage() {
         </aside>
 
         <main className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
+          <VisitorStats />
           <div className="mb-6 flex items-center justify-between">
             <h2 className="font-display text-xl font-bold capitalize">
               {sections.find((s) => s.key === active)?.label}

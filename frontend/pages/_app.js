@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { Inter, Space_Grotesk } from "next/font/google";
+import VisitorTracker from "../features/visitors/frontend/VisitorTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }) {
           --font-display: ${spaceGrotesk.style.fontFamily};
         }
       `}</style>
+      <VisitorTracker />
       <Component {...pageProps} />
     </>
   )

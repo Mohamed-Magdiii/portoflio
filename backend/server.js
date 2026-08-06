@@ -4,6 +4,7 @@ import cors from "cors";
 import contentRoutes from "./features/content/routes.js";
 import adminRoutes from "./features/admin/routes.js";
 import blogRoutes from "./features/blog/routes.js";
+import visitorsRoutes from "./features/visitors/routes.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api", contentRoutes);
 app.use("/api", blogRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api", visitorsRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
