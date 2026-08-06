@@ -36,6 +36,13 @@ const fields = {
     { name: "email", label: "Email", type: "text" },
     { name: "linkedin", label: "LinkedIn URL", type: "text" },
     { name: "github", label: "GitHub URL", type: "text" },
+    { name: "bookingUrl", label: "Booking URL (Calendly)", type: "text" },
+  ],
+  services: [
+    { name: "heading", label: "Heading", type: "text" },
+    { name: "description", label: "Description", type: "textarea" },
+    { name: "ctaLabel", label: "CTA button label", type: "text" },
+    { name: "items", label: "Services", type: "services" },
   ],
   blog: [
     { name: "heading", label: "Heading", type: "text" },
@@ -249,6 +256,80 @@ function CardsEditor({ items, onChange }) {
   );
 }
 
+function ServicesEditor({ items, onChange }) {
+  const update = (index, patch) => {
+    const next = items.map((item, j) => (j === index ? { ...item, ...patch } : item));
+    onChange(next);
+  };
+  return (
+    <div className="space-y-4">
+      {items.map((item, i) => (
+        <div key={i} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+              Service {i + 1}
+            </span>
+            <div className="flex items-center gap-2">
+              <MoveButtons
+                items={items}
+                index={i}
+                onChange={onChange}
+                compact
+              />
+              <button
+                type="button"
+                onClick={() => onChange(items.filter((_, j) => j !== i))}
+                className="rounded-lg border border-red-300 px-2 py-0.5 text-xs text-red-500 hover:bg-red-50 dark:border-red-500/30 dark:hover:bg-red-500/10"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <input
+              className={inputCls}
+              placeholder="Title"
+              value={item.title || ""}
+              onChange={(e) => update(i, { title: e.target.value })}
+            />
+            <textarea
+              className={inputCls}
+              placeholder="Description"
+              rows={2}
+              value={item.description || ""}
+              onChange={(e) => update(i, { description: e.target.value })}
+            />
+            <input
+              className={inputCls}
+              placeholder="Price (e.g. 'from $100/hr') — optional"
+              value={item.price || ""}
+              onChange={(e) => update(i, { price: e.target.value })}
+            />
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-slate-500 dark:text-slate-400">Icon key:</span>
+              <input
+                className={inputCls}
+                placeholder="design / code / browser"
+                value={item.icon || ""}
+                onChange={(e) => update(i, { icon: e.target.value })}
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={() =>
+          onChange([...items, { title: "", description: "", price: "", icon: "" }])
+        }
+        className="rounded-xl border border-teal-500/40 px-4 py-1.5 text-sm font-medium text-teal-600 hover:bg-teal-500/10 dark:text-teal-400"
+      >
+        + Add service
+      </button>
+    </div>
+  );
+}
+
 function CertsEditor({ items, onChange }) {
   const update = (index, patch) => {
     const next = items.map((item, j) => (j === index ? { ...item, ...patch } : item));
@@ -338,6 +419,8 @@ function Field({ field, value, onChange }) {
       return <CardsEditor items={value || []} onChange={onChange} />;
     case "certs":
       return <CertsEditor items={value || []} onChange={onChange} />;
+    case "services":
+      return <ServicesEditor items={value || []} onChange={onChange} />;
     case "textarea":
       return (
         <textarea

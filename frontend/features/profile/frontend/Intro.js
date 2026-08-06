@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { AiFillLinkedin, AiFillGithub, AiOutlineMail } from "react-icons/ai";
-import { BsDownload } from "react-icons/bs";
+import { BsDownload, BsCalendarCheck } from "react-icons/bs";
 import Image from "next/image";
 import deved from "../../../public/mohamed.png";
 import o11Badge from "../../../public/Associate Developer - O11.png";
 import odcBadge from "../../../public/Associate Developer - ODC.png";
 import { useState, useEffect } from "react";
 
-const Intro = ({ content }) => {
+const Intro = ({ content, contact }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
@@ -74,6 +74,17 @@ const Intro = ({ content }) => {
             <AiOutlineMail />
             Email me
           </a>
+          {contact?.bookingUrl && (
+            <a
+              href={contact.bookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost"
+            >
+              <BsCalendarCheck />
+              Book a call
+            </a>
+          )}
         </div>
         <div className="mt-8 flex justify-center gap-5 text-4xl text-slate-600 dark:text-slate-300 md:justify-start">
           <a

@@ -6,6 +6,7 @@ import Intro from "../features/profile/frontend/Intro";
 import About from "../features/about/frontend/AboutSection";
 import Skills from "../features/skills/frontend/SkillsSection";
 import Experience from "../features/experience/frontend/Experience";
+import ServicesSection from "../features/services/frontend/ServicesSection";
 import Certifications from "../features/certifications/frontend/Certifications";
 import ContactMe from "../features/contact/frontend/ContactMe";
 import Footer from "../features/layout/frontend/Footer";
@@ -122,10 +123,17 @@ export default function Home() {
       />
 
       <main className="relative mx-auto max-w-6xl px-6 lg:px-8">
-        <Intro content={content.hero || defaultContent.hero} />
+        <Intro
+          content={content.hero || defaultContent.hero}
+          contact={content.contact || defaultContent.contact}
+        />
         <About content={content.about || defaultContent.about} />
         <Skills content={content.skills || defaultContent.skills} />
         <Experience content={content.experience || defaultContent.experience} />
+        <ServicesSection
+          content={content.services || defaultContent.services}
+          contact={content.contact || defaultContent.contact}
+        />
         <Certifications
           content={content.certifications || defaultContent.certifications}
         />

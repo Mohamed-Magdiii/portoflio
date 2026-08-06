@@ -2,18 +2,30 @@
 
 import { AiOutlineMail, AiFillPhone, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { ImLocation } from "react-icons/im";
-import { BsArrowRepeat } from "react-icons/bs";
-import emailjs from "@emailjs/browser";
+import { BsArrowRepeat, BsCalendarCheck } from "react-icons/bs";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { API_URL } from "../../_shared/frontend/api";
 
 const MySwal = withReactContent(Swal);
+
+const projectTypes = [
+  "OutSystems application development",
+  "OutSystems architecture / consulting",
+  "System integration (SAP / REST / SOAP)",
+  "Performance optimization",
+  "Maintenance & support",
+  "Full stack web development",
+  "Other",
+];
+
+const budgets = ["< $2,000", "$2,000 – $5,000", "$5,000 – $15,000", "$15,000+", "Not sure yet"];
 
 const alertContent = () => {
   MySwal.fire({
     title: "Thanks For Contacting Me!",
-    text: "Your message was successfully sent.",
+    text: "Your message was successfully sent. I'll get back to you soon.",
     icon: "success",
     timer: 2000,
     timerProgressBar: true,
@@ -26,31 +38,40 @@ const ContactMe = ({ content }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isSending, setIsSending] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setIsSending(true);
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        e.target,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          alertContent();
-          form.current.reset();
-        },
-        (error) => {
-          console.error("EmailJS send failed:", error);
-          MySwal.fire({
-            title: "Message Not Sent",
-            text: error.text || "An error occurred while sending your message.",
-            icon: "error",
-          });
-        }
-      )
-      .finally(() => setIsSending(false));
+    const data = new FormData(form.current);
+    const payload = {
+      name: data.get("from_name"),
+      email: data.get("email"),
+      phone: data.get("number"),
+      subject: data.get("subject"),
+      projectType: data.get("projectType"),
+      budget: data.get("budget"),
+      message: data.get("message"),
+    };
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Failed to send message");
+      alertContent();
+      form.current.reset();
+      setIsDisabled(true);
+    } catch (error) {
+      console.error("Contact submit failed:", error);
+      MySwal.fire({
+        title: "Message Not Sent",
+        text: error.message || "An error occurred while sending your message.",
+        icon: "error",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const handleChange = () => {
@@ -90,6 +111,20 @@ const ContactMe = ({ content }) => {
       <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
         {content?.description}
       </p>
+
+      {content?.bookingUrl && (
+        <div className="mt-6">
+          <a
+            href={content.bookingUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary"
+          >
+            <BsCalendarCheck />
+            Book a free consultation
+          </a>
+        </div>
+      )}
 
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="glass flex flex-col gap-6 p-8 lg:col-span-2">
@@ -203,6 +238,36 @@ const ContactMe = ({ content }) => {
                 onChange={handleChange}
                 required
               />
+            </div>
+            <div>
+              <label htmlFor="projectType" className="mb-1.5 block text-sm font-medium">
+                Project type
+              </label>
+              <select id="projectType" name="projectType" className="field" defaultValue="">
+                <option value="" disabled>
+                  Select a service...
+                </option>
+                {projectTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="budget" className="mb-1.5 block text-sm font-medium">
+                Estimated budget
+              </label>
+              <select id="budget" name="budget" className="field" defaultValue="">
+                <option value="" disabled>
+                  Select a range...
+                </option>
+                {budgets.map((budget) => (
+                  <option key={budget} value={budget}>
+                    {budget}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="message" className="mb-1.5 block text-sm font-medium">

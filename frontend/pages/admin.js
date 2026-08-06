@@ -5,6 +5,7 @@ import SectionEditor from "../features/admin/frontend/SectionEditor";
 import BlogManager from "../features/admin/frontend/BlogManager";
 import Login from "../features/admin/frontend/Login";
 import VisitorStats from "../features/visitors/frontend/VisitorStats";
+import LeadsManager from "../features/leads/frontend/LeadsManager";
 import { API_URL } from "../features/_shared/frontend/api";
 
 const MySwal = withReactContent(Swal);
@@ -14,11 +15,13 @@ const sections = [
   { key: "about", label: "About" },
   { key: "skills", label: "Skills" },
   { key: "experience", label: "Experience" },
+  { key: "services", label: "Services" },
   { key: "certifications", label: "Certifications" },
   { key: "contact", label: "Contact" },
   { key: "site", label: "Site / SEO" },
   { key: "blogs", label: "Blogs" },
   { key: "visitors", label: "Visitors" },
+  { key: "leads", label: "Leads" },
 ];
 
 export default function AdminPage() {
@@ -143,6 +146,8 @@ export default function AdminPage() {
         <main className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
           {active === "visitors" ? (
             <VisitorStats />
+          ) : active === "leads" ? (
+            <LeadsManager token={token} />
           ) : (
             <>
               <div className="mb-6 flex items-center justify-between">

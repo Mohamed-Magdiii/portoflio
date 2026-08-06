@@ -108,6 +108,56 @@ export const defaultContent = {
       },
     ],
   },
+  services: {
+    heading: "Services",
+    description:
+      "Senior OutSystems and full-stack expertise for enterprise teams — from architecture to delivery.",
+    items: [
+      {
+        title: "OutSystems Application Development",
+        description:
+          "End-to-end enterprise applications with OutSystems Reactive Web — secure, scalable, and maintainable.",
+        price: "",
+        icon: "code",
+      },
+      {
+        title: "Solution Architecture & Consulting",
+        description:
+          "Architecture reviews, best practices, and low-code advisory to keep your OutSystems estate healthy.",
+        price: "",
+        icon: "design",
+      },
+      {
+        title: "System Integrations",
+        description:
+          "REST/SOAP integrations with SAP and enterprise systems, plus API design and data migration.",
+        price: "",
+        icon: "browser",
+      },
+      {
+        title: "Performance Optimization",
+        description:
+          "Find and fix slow screens, queries, and modules so your OutSystems apps perform at scale.",
+        price: "",
+        icon: "code",
+      },
+      {
+        title: "Maintenance & Support",
+        description:
+          "Ongoing support, bug fixes, and feature releases on a retainer — predictable and reliable.",
+        price: "",
+        icon: "design",
+      },
+      {
+        title: "Full Stack Development",
+        description:
+          "Custom web apps with React, Next.js, Node.js and MongoDB when you need beyond low-code.",
+        price: "",
+        icon: "browser",
+      },
+    ],
+    ctaLabel: "Book a free consultation",
+  },
   contact: {
     heading: "Let's build something great",
     description:
@@ -117,6 +167,7 @@ export const defaultContent = {
     email: "mohamed.magdy.imosa@gmail.com",
     linkedin: "https://www.linkedin.com/in/mohamed-magdy-outsystems/",
     github: "https://github.com/Mohamed-Magdiii",
+    bookingUrl: "https://calendly.com/mohamed-magdy-imosa/consultation",
   },
   blog: {
     heading: "Insights & Articles",
